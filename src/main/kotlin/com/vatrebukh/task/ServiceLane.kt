@@ -11,6 +11,7 @@ package com.vatrebukh.task
 
 fun serviceLane(widths: Array<Int>, cases: Array<Array<Int>>): Array<Int> {
 
+    return cases.map {widths.copyOfRange(it[0], it[1]+1).minOrNull()!!}.toTypedArray()
 
 }
 
