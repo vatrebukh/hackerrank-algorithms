@@ -11,6 +11,22 @@ package com.vatrebukh.task
 
 fun beautifulTriplets(d: Int, arr: Array<Int>): Int {
 
+    var count = 0
+
+    for (i in 0..arr.size - 3) {
+        for (j in i+1 .. arr.size - 2) {
+            if (arr[j] - arr[i] != d) {
+                continue
+            }
+            for (k in j + 1 until arr.size) {
+                if (arr[k] - arr[j] == d && arr[j] - arr[i] == d ) {
+                    count++
+                }
+            }
+        }
+    }
+
+    return count
 
 }
 
