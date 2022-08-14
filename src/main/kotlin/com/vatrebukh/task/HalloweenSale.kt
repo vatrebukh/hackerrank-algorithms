@@ -12,7 +12,18 @@ package com.vatrebukh.task
  */
 
 fun howManyGames(price: Int, discount: Int, minPrice: Int, s: Int): Int {
+    var count = 0
+    var currentPrice = price
+    var sum = s
 
+    while (sum >= currentPrice) {
+        count++
+        sum -= currentPrice
+        if (currentPrice > minPrice) {
+            currentPrice = Math.max(minPrice, currentPrice - discount)
+        }
+    }
+    return count
 }
 
 fun main(args: Array<String>) {
