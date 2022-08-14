@@ -11,7 +11,27 @@ package com.vatrebukh.task
  */
 
 fun workbook(chapters: Int, pageSize: Int, problemsInChapter: Array<Int>): Int {
+    var count = 0
 
+    val book: MutableMap<Int, Pair<Int, Int>> = HashMap()
+    var pageNumber = 1
+    problemsInChapter.forEach {
+        val pages = it / pageSize
+        for (i in 0 until pages) {
+            book[pageNumber++] = i * pageSize + 1 to (i+1) * pageSize
+        }
+        if (it % pageSize != 0) {
+            book[pageNumber++] = pages * pageSize + 1 to it
+        }
+    }
+
+    book.forEach{
+        if (it.key >= it.value.first && it.key <= it.value.second) {
+            count++
+        }
+    }
+
+    return count
 }
 
 fun main(args: Array<String>) {
