@@ -11,7 +11,17 @@ package com.vatrebukh.task
  */
 
 fun chocolateFeast(n: Int, c: Int, m: Int): Int {
+    var count = n / c
+    var bars: Int
+    var wraps = n / c
 
+    while (wraps >= m) {
+        bars = wraps / m
+        count += bars
+        wraps -= bars * (m - 1)
+    }
+
+    return count
 }
 
 fun main(args: Array<String>) {
